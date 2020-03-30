@@ -54,6 +54,9 @@ class Main extends Component {
         />
       );
     };
+    const AboutUs = () => {
+      return <About leaders={this.state.leaders} />;
+    };
 
     return (
       <div className="App">
@@ -67,7 +70,7 @@ class Main extends Component {
             component={() => <Menu dishes={this.state.dishes} />}
           />
           <Route path="/menu/:dishId" component={DishWithId} />
-          <Route path="/aboutus" component={About} />
+          <Route path="/aboutus" component={AboutUs} />
           <Redirect to="/home" />
         </Switch>
         <Footer />
