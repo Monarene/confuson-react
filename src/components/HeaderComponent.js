@@ -14,7 +14,7 @@ import {
   Form,
   FormGroup,
   Input,
-  Label
+  Label,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
@@ -23,7 +23,7 @@ class Header extends Component {
     super(props);
     this.state = {
       isNavOpen: false,
-      isModalOpen: false
+      isModalOpen: false,
     };
     this.toggleNav = this.toggleNav.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
@@ -35,7 +35,7 @@ class Header extends Component {
   }
   toggleModal() {
     this.setState({
-      isModalOpen: !this.state.isModalOpen
+      isModalOpen: !this.state.isModalOpen,
     });
   }
   handleLogin(event) {
@@ -122,7 +122,7 @@ class Header extends Component {
                   type="text"
                   id="username"
                   name="username"
-                  innerRef={input => (this.username = input)}
+                  innerRef={(input) => (this.username = input)}
                 />
               </FormGroup>
               <FormGroup>
@@ -131,7 +131,7 @@ class Header extends Component {
                   type="password"
                   id="password"
                   name="password"
-                  innerRef={input => (this.password = input)}
+                  innerRef={(input) => (this.password = input)}
                 />
               </FormGroup>
               <FormGroup check>
@@ -139,7 +139,7 @@ class Header extends Component {
                   <Input
                     type="checkbox"
                     name="remember"
-                    innerRef={input => (this.remember = input)}
+                    innerRef={(input) => (this.remember = input)}
                   />
                   Remember me
                 </Label>

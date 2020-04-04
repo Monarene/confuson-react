@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import {
   Breadcrumb,
-  BreadcrumbItemCard,
+  BreadcrumbItem,
   Card,
   CardImg,
   CardImgOverlay,
   CardTitle,
-  BreadcrumbItem
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
 function Menu(props) {
-  const menu = props.dishes.map(dish => {
+  const menu = props.dishes.map((dish) => {
     return (
       <div className="col-12 col-md-5 m-1">
         <Link to={`menu/${dish.id}`}>
