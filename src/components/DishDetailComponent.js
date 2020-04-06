@@ -37,8 +37,13 @@ class CommentForm extends Component {
   }
 
   handleSubmit(values) {
-    console.log("SUmbitted Comment " + JSON.stringify(values));
-    alert("SUmbitted Comment " + JSON.stringify(values));
+    this.toggleModal();
+    this.props.addComment(
+      this.props.dishId,
+      values.rating,
+      values.fullname,
+      values.comment
+    );
   }
   render() {
     return (
@@ -49,7 +54,7 @@ class CommentForm extends Component {
           <ModalBody>
             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Row className="form-group">
-                <Label htmlFor="rating">Full Name</Label>
+                <Label htmlFor="rating">Rating</Label>
                 <Col md={12}>
                   <Control.select
                     model=".rating"
@@ -122,7 +127,7 @@ function RenderDish({ dish }) {
   else return <div></div>;
 }
 
-function RenderComments({ comment }) {
+function RenderComments({ comment, addComment, dishId }) {
   if (comment != null) {
     const Comments = comment.map((dishComment) => {
       return (
@@ -144,7 +149,7 @@ function RenderComments({ comment }) {
     return (
       <div>
         {Comments}
-        <CommentForm />
+        <CommentForm dishId={dishId} addComment={addComment} />
       </div>
     );
   } else {
@@ -173,7 +178,11 @@ const DishDetail = (props) => {
         </div>
         <div className="col-12 col-md-5 m-1">
           <h4>Comments</h4>
-          <RenderComments comment={props.comments} />
+          <RenderComments
+            comment={props.comments}
+            addComment={props.addComment}
+            dishId={props.dish.id}
+          />
         </div>
         <div></div>
       </div>
