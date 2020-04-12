@@ -141,19 +141,21 @@ function RenderComments({ comment, postComment, dishId }) {
   if (comment != null) {
     const Comments = comment.map((dishComment) => {
       return (
-        <Stagger>
-          <div key={dishId}>
-            <h5 className="m-2">{dishComment.comment}</h5>
-            <h5>
-              {" "}
-              -- {dishComment.author},{" "}
-              {new Intl.DateTimeFormat("en-US", {
-                year: "numeric",
-                month: "short",
-                day: "2-digit",
-              }).format(new Date(Date.parse(dishComment.date)))}
-            </h5>
-          </div>
+        <Stagger in>
+          <Fade in>
+            <div key={dishId}>
+              <h5 className="m-2">{dishComment.comment}</h5>
+              <h5>
+                {" "}
+                -- {dishComment.author},{" "}
+                {new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "2-digit",
+                }).format(new Date(Date.parse(dishComment.date)))}
+              </h5>
+            </div>
+          </Fade>
         </Stagger>
       );
     });
